@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Be Smarter 🌟</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' href='./app.css'>
+  </head>
+  <body>
+    <section id='options'>
+
+      <section class='op_group'>
+        <p class='title'>OPTIONS_</p>
+
+        <div class='choices'>
+          <label for='option1'>
+            <span>Plus</span>
+            <span class='op_sym'>+</span>
+            <input type='checkbox' id='option1' name='option1' value='+'>
+          </label>
+
+          <label for='option2'>
+            <span>Subtract</span>
+            <span class='op_sym'>–</span>
+            <input type='checkbox' id='option2' name='option2' value='–'>
+          </label>
+
+          <label for='option3'>
+            <span>Multiply</span>
+            <span class='op_sym'>×</span>
+            <input type='checkbox' id='option3' name='option3' value='×'>
+          </label>
+
+          <label for='option4'>
+            <span>Dividing</span>
+            <span class='op_sym'>÷</span>
+            <input type='checkbox' id='option4' name='option4' value='÷'>
+          </label>
+        </div>
+      </section>
+
+      <section class='op_group'>
+        <p class='title'>LEVELS_</p>
+
+        <div class='choices'>
+          <label for='easy'>
+            <span>Easy</span>
+            <input type='radio' id='easy' name='levels' value='easy'>
+          </label>
+
+          <label for='middle'>
+            <span>Middle</span>
+            <input type='radio' id='middle' name='levels' value='middle'>
+          </label>
+
+          <label for='advanced'>
+            <span>Advanced</span>
+            <input type='radio' id='advanced' name='levels' value='advanced'>
+          </label>
+
+        </div>
+      </section>
+
+      <section id='operators'>
+        <button id='start'>START</button>
+
+        <div>
+          <button id='restart' class='hide'>RESTART</button>
+          <button id='pause_play' class='hide' data-pause="false">| |</button>
+        </div>
+      </section>
+
+      
+    </section>
+
+    <section id='operations' class='sh ow'>
+      <section id='operations_con'>
+
+        <div class='des1'> <!--Use it to design container edges--> </div>
+        <div class='des2'> <!--Use it to design container edges--> </div>
+        <div class='des3'> <!--Use it to design container edges--> </div>
+        <div class='des4'> <!--Use it to design container edges--> </div>
+
+        <div id='timer'>
+          <p>⏱</p>
+          <div>
+            <div></div>
+          </div>
+        </div>
+
+        <div id='counter'>
+          <p id='begin'><span>1</span></p>
+          <p id='current'>1</p>
+          <p id='end'><span>10<i id='flag'>🏁</i></span></p>
+        </div>
+
+        <div id='quiz_con'>
+          <p>12 + 34 =</p>
+          <input type='number'>
+        </div>
+      </section>
+    </section>
+     
+    <div id='res'><!--for responsive desgin-->
+        <img src='./images/setting.png' alt='setiong icon'>
+    </div> 
+    
+      <section id='final_result'>
+         <!-- this content will fill automatically --></section>
+
+    <audio id='audio'>  <!--will play if the user solved all problems-->
+      <source src="" type="audio/mpeg">
+      your browser does not support the audio element.
+    </audio>
+
+    <script src='./app.js'></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </body>
+</html>
