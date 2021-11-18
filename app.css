@@ -1,0 +1,421 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+body {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;  
+  font-size: 18px;
+  position: relative;
+}
+
+/*-- options --*/
+label:hover,
+button:hover,
+input:hover {
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+#options {
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px;
+  border-right: 2px dashed lightgray;
+}
+.op_group {
+  width: 100%;
+}
+.choices.hide {
+  color: lightgray;
+  pointer-events: none;
+  user-select: none;
+}
+.choices.hide label input {
+  opacity: 0.5;
+}
+.title {
+  font-size: 27px;
+  font-weight: bold;
+  margin: 18px 0;
+  color: #fff;
+  text-shadow: 0px 1px 0px gray,
+               1px 0px 0px gray,
+               -1px 0px 0px gray, 
+               0px -1px 0px gray;
+}
+label {
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 9px 0;
+  padding-left: 18px;
+}
+label:hover {
+  color: #3575fe;
+}
+label span:first-of-type {
+  width: 50%;
+}
+.op_sym {
+  font-weight: bold;
+}
+label input {
+  width: 20px;
+  height: 20px;
+}
+#operators {
+  margin: 32px 0 18px 0;
+  text-align: center;
+}
+#operators button {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 4.5px;
+  background: #fff;
+  border: 2px solid #3575fe;
+  color: #3575fe;
+}
+#operators button:hover {
+  background: #3575fe;
+  color: #fff;
+  border: 2px solid #3575fe;
+}
+#start {
+  width: 150px;
+}
+#operators div {
+  width: 150px;
+  margin: 10px auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+#restart {
+  width: 100px;
+}
+#pause_play {
+  width: 40px;
+}
+#operators button.hide {
+  background: #fff;
+  color: lightgray;
+  border: 2px solid lightgray;
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+/*-- operations --*/
+#operations {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#operations_con {
+  position: relative;
+}
+/*-- operations container edges --*/
+div[class*='des'] {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border: 6px solid lightgray;
+}
+div.des1 {
+  top: 0;
+  left: 0;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+div.des2 {
+  top: 0;
+  right: 0;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+div.des3 {
+  bottom: 0;
+  right: 0;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+div.des4 {
+  left: 0;
+  bottom: 0;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+
+/*-- timer --*/
+#timer {
+  position: absolute;
+  top: -24px;
+  left: 0;
+  width: 100px;
+  height: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  visibility: hidden;
+  opacity: 0;
+}
+#timer p {
+  padding-right: 6px;
+}
+#timer div {
+  width: 80px;
+  height: 100%;  
+  background: lightgray;
+  transform: skewX(-18deg);
+}
+#timer div div {
+  background: #3575fe;
+  width: 100%;
+  height: 100%; 
+  transition: 1s ease-in;
+}
+/*-- counter --*/
+#counter {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: -32px;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+#counter p {
+  width: 50px;
+  text-align: center;
+  position: relative;
+}
+#counter p span {
+  color: gray;
+  width: 100%;
+  border-bottom: 3px solid lightgray;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+}
+#flag {
+  transform: skewX(-18deg);
+}
+#current {
+  color: #3575fe;
+  font-weight: bold;
+}
+
+/*-- quiz --*/
+#quiz_con {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+#quiz_con p {
+  font-size: 90px;
+  font-weight: bold;
+  visibility: hidden;
+  opacity: 0;
+}
+#operations.show #quiz_con{
+  width: 800px;
+  height: 400px;
+  transition: 0.7s ease-out;
+}
+#quiz_con input {
+  color: #3575fe;
+  font-size: 90px;
+  width: 200px;
+  font-weight: bold;
+  opacity: 0;
+  padding: 5px 10px;
+  pointer-events: none;
+}
+#operations.show #quiz_con input:focus {
+  outline: 0;
+  border: 3px dashed #3575fe;
+  opacity: 1;
+}
+#operations.show #quiz_con p,
+#operations.show #timer,
+#operations.show #quiz_con input,
+#operations.show #counter {
+  transition: 0.4s 0.6s;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: visible;
+}
+
+/*--final result --*/
+#final_result {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: rgb(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+  visibility: hidden;
+  opacity: 0;
+}
+#final_result.show {
+  transition: 0.5s;
+  visibility: visible;
+  opacity: 1;
+}
+#final_result section {
+  width: 500px;
+  padding: 32px;
+  background: #fff;
+  border: 2px solid gray;
+}
+#final_result section.errors {
+  margin-top: 400px;
+}
+#final_result .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 27px;
+  font-weight: bold;
+}
+.score {
+  padding: 3px 9px;
+  color: #3575fe;
+  border: 3px dashed lightgray;
+}
+.motivational_text {
+  margin: 32px 0;
+  font-size: 22.5px;
+}
+#final_result section img {
+  width: 50%;
+  margin: auto;
+  display: block;
+}
+ul {
+  list-style-type: none;
+}
+ul li {
+  font-size: 21px;
+  margin: 9px 0;
+  padding: 4.5px;
+}
+.false {
+  border: 1px dashed red;
+}
+.false span:first-child {
+  color: red;
+  margin-right: 4.5px;  
+  font-size: 22.5px;
+}
+.false span:last-child {
+  color: green;
+  font-weight: bold;
+  float: right;
+}
+.true span:first-child {
+  color: green;
+  margin-right: 4.5px;
+  font-size: 22.5px;
+}
+#new_game {
+  width: 100%;
+  position: sticky;
+  bottom: 32px;
+  padding: 18px;
+  background: #fff;
+  border: 2px solid #3575fe;
+  color: #3575fe;
+  font-size: 22.5px;
+  font-weight: bold;
+  box-shadow: 0px 0px 10px 5px lightgray;
+}
+#new_game:hover {
+  color: #fff;
+  background: #3575fe;
+}
+
+/*--make app responsive--*/
+#res {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  visibility: hidden;
+  z-index: 1;
+}
+#res img {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 1110px) {
+  #options {
+    min-width: 200px;
+  }
+  #operations.show #quiz_con{
+    width: 600px;
+    height: 300px;
+  }
+  #quiz_con p {
+    font-size: 72px;
+  }
+  #quiz_con input {
+    font-size: 72px;
+    width: 150px;
+  }
+}
+@media screen and (max-width: 800px) {
+  #restart {
+    width: 150px;
+  }
+  #pause_play {
+    display: none;
+  }
+  #options {
+    position: absolute;
+    left: -200px;
+    background: #fff;
+    z-index: 1;
+  }
+  #res {
+    visibility: visible;
+  }
+  #options.showSetting {
+    transition: 0.5s;
+    left: 0;
+  }
+  #flag {
+    transform: skewX(0deg);
+  }
+}
+@media screen and (max-width: 650px) {
+  #operations.show #quiz_con{
+    width: 90vw;
+    height: auto;
+    padding: 72px 18px;   
+  }
+  #quiz_con p {
+    font-size: 36px;
+  }
+  #quiz_con input {
+    font-size: 36px;
+    width: 80px;
+  }
+}
