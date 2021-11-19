@@ -219,6 +219,9 @@ function restart() {
   userSolutions = [];
   PCSolutions = [];
 
+  userOptions = [];
+  userLevel = '';
+  
   count = 1;
   widthOfTimer = 100;
   t = 0;
@@ -304,6 +307,9 @@ function newGame() {
   userSolutions = [];
   PCSolutions = [];
 
+  userOptions = [];
+  userLevel = '';
+
   count = 1;
   widthOfTimer = 100;
   t = 0;
@@ -334,8 +340,11 @@ function showSetting() {
     if (getComputedStyle(START_BUTTON).opacity < 1){
       counter = setInterval(counterAction, 1000);
     }
-    PLACE_OF_QUIZE.lastElementChild.focus();
-    PLACE_OF_QUIZE.lastElementChild.style.pointerEvents = 'visible';
+    if (userLevel && userOptions.length > 0) {
+      PLACE_OF_QUIZE.lastElementChild.focus();
+      PLACE_OF_QUIZE.lastElementChild.style.pointerEvents = 'visible';
+    }
+    
     test = true
   }
 }
