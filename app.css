@@ -401,9 +401,9 @@ ul li {
     transition: 0.5s;
     left: 0;
   }
-  #flag {
-    transform: skewX(0deg);
-  }
+  #new_game {
+    bottom: 72px;
+  }  
 }
 @media screen and (max-width: 650px) {
   #operations.show #quiz_con{
